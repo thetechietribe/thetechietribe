@@ -158,6 +158,22 @@ const buttonStyles = {
     width: "200px",
     height: "200px",
   },
+
+  newTag: {
+    backgroundColor: "#FBD4C5",
+    borderRadius: "6px",
+    fontSize: "12px",
+    color: "red",
+    padding: "3px 8px",
+  },
+
+  servicesByRole: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    padding: "20px 0px",
+    gap: "20px",
+  },
 };
 
 const DrawerAppBar = (props) => {
@@ -309,17 +325,7 @@ const DrawerAppBar = (props) => {
                     <Typography sx={buttonStyles.menuHeading}>
                       Next-Gen Services{" "}
                     </Typography>
-                    <Typography
-                      sx={{
-                        backgroundColor: "#FBD4C5",
-                        borderRadius: "6px",
-                        fontSize: "12px",
-                        color: "red",
-                        padding: "3px 8px",
-                      }}
-                    >
-                      NEW
-                    </Typography>
+                    <Typography sx={buttonStyles.newTag}>NEW</Typography>
                   </Box>
 
                   {nextGenArray?.map((data, index) => {
@@ -404,15 +410,7 @@ const DrawerAppBar = (props) => {
                 </Box>
               </Box>
               <Divider />
-              <Box
-                sx={{
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  padding: "20px 0px",
-                  gap: "20px",
-                }}
-              >
+              <Box sx={buttonStyles.servicesByRole}>
                 <Typography
                   style={{ display: "flex", alignItems: "center" }}
                   sx={buttonStyles.menuHeading}

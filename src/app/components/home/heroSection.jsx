@@ -74,6 +74,23 @@ const styles = {
     alignItems: "center",
     mt: "2rem",
   },
+
+  links: {
+    color: "#fff",
+    textAlign: "center",
+    fontSize: { xs: "15px", sm: "22px" },
+    margin: "0",
+    fontFamily: "Poppins",
+    fontWeight: "200",
+    letterSpacing: "2px",
+  },
+
+  linksIcon: {
+    color: "#fff",
+    fontSize: { xs: "10px", sm: "10px" },
+    margin: "0 5px",
+    textAlign: "center",
+  },
 };
 
 const HeroSection = () => {
@@ -119,28 +136,9 @@ const HeroSection = () => {
                   cursor: "pointer",
                 }}
               >
-                <Typography
-                  sx={{
-                    color: "#fff",
-                    textAlign: "center",
-                    fontSize: { xs: "15px", sm: "22px" },
-                    margin: "0",
-                    fontFamily: "Poppins",
-                    fontWeight: "200",
-                    letterSpacing: "2px",
-                  }}
-                >
+                <Typography sx={styles.links}>
                   {data.name}{" "}
-                  {!isLastItem && (
-                    <FiberManualRecordIcon
-                      sx={{
-                        color: "#fff",
-                        fontSize: { xs: "10px", sm: "10px" },
-                        margin: "0 5px",
-                        textAlign: "center",
-                      }}
-                    />
-                  )}
+                  {!isLastItem && <FiberManualRecordIcon sx={styles.links} />}
                 </Typography>
               </Link>
             );
