@@ -14,7 +14,7 @@ const styles = {
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
-    padding: "80px 40px",
+    padding: { xs: "40px", lg: "80px" },
     backgroundColor: "#ffffff",
     alignItems: "center",
   },
@@ -38,7 +38,7 @@ const styles = {
     alignItems: "center",
     flexWrap: "wrap",
     mt: "3rem",
-    gap: "30px",
+    gap: "26px",
   },
   card: {
     display: "flex",
@@ -53,7 +53,7 @@ const styles = {
     transition: "transform 0.3s ease",
     position: "relative",
     "&:nth-child(2n)": {
-      mt: { xs: "0rem", lg: "3rem" },
+      mt: { xs: "0rem", lg: "5rem" },
     },
     "&:nth-child(4n)": {
       mt: { xs: "0rem", lg: "2rem" },

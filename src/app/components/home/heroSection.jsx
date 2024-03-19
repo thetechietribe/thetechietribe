@@ -138,7 +138,9 @@ const HeroSection = () => {
               >
                 <Typography sx={styles.links}>
                   {data.name}{" "}
-                  {!isLastItem && <FiberManualRecordIcon sx={styles.links} />}
+                  {!isLastItem && (
+                    <FiberManualRecordIcon sx={styles.linksIcon} />
+                  )}
                 </Typography>
               </Link>
             );

@@ -12,7 +12,7 @@ const styles = {
     display: "flex",
     flexDirection: { xs: "column", lg: "row" },
     justifyContent: "center",
-    padding: "80px 40px",
+    padding: { xs: "40px", lg: "80px" },
     backgroundColor: "#ffffff",
   },
   heading: {

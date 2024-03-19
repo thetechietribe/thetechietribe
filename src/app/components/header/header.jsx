@@ -237,7 +237,9 @@ const DrawerAppBar = (props) => {
       <AppBar
         sx={{
           backgroundColor: open ? "#ffffff" : "transparent",
-          padding: "5px 40px",
+          padding: "5px 57px",
+          padding: { xs: "5px 10px", lg: "5px 57px" },
+
           boxShadow: "none",
           transition: "background-color 1s ease",
           "& .nav-btn": {

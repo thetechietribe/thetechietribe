@@ -1,3 +1,4 @@
+import Footer from "./components/footer/footer";
 import DrawerAppBar from "./components/header/header";
 import "./globals.css";
 
@@ -26,6 +27,7 @@ export default function RootLayout({ children }) {
           >
             <DrawerAppBar />
             {children}
+            <Footer />
           </div>
         </main>
       </body>
