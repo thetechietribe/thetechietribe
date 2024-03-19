@@ -4,7 +4,7 @@ import React from "react";
 
 import { Box, Button, Link, Typography } from "@mui/material";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
+// import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
 
 const styles = {
   mainContainer: {
@@ -31,6 +31,7 @@ const styles = {
     background: "rgba(0, 0, 0, 0.5)",
   },
   textContainer: {
+    width: "100%",
     position: "absolute",
     top: "50%",
     left: "50%",
@@ -39,27 +40,28 @@ const styles = {
   heading: {
     color: "#fff",
     textAlign: "center",
-    fontSize: { xs: "30px", sm: "60px" },
+    fontSize: { xs: "40px", lg: "60px" },
     margin: "0",
     fontWeight: "700",
     lineHeight: "1.2",
     fontFamily: "Poppins",
     letterSpacing: "2px",
   },
+
   linkArray: {
-    display: { xs: "column", md: "flex" },
-    gap: "5px",
+    display: { xs: "column", lg: "flex" },
+    gap: "15px",
     mt: "1rem",
     justifyContent: "center",
     alignItems: "center",
-    textDecoration: { xs: "underline", lg: "none" },
   },
+
   tellUsBtn: {
     color: "#ffffff",
     textTransform: "none",
     backgroundColor: "#378C92",
     fontSize: { xs: "14px", sm: "20px" },
-    height: { xs: "100%", sm: "60px" },
+    height: { xs: "40px", lg: "60px" },
     borderRadius: "8px",
     padding: { xs: "0px 10px", sm: "0px 30px" },
     transition: "background-color 0.3s ease",
@@ -76,6 +78,7 @@ const styles = {
   },
 
   links: {
+    display: "flex",
     color: "#fff",
     textAlign: "center",
     fontSize: { xs: "15px", sm: "22px" },
@@ -83,9 +86,17 @@ const styles = {
     fontFamily: "Poppins",
     fontWeight: "200",
     letterSpacing: "2px",
+    textDecoration: "none",
+    alignItems: "center",
+    gap: "10px",
+    justifyContent: "center",
   },
 
   linksIcon: {
+    display: {
+      xs: "none",
+      lg: "flex",
+    },
     color: "#fff",
     fontSize: { xs: "10px", sm: "10px" },
     margin: "0 5px",
@@ -94,17 +105,17 @@ const styles = {
 };
 
 const HeroSection = () => {
-  const linksArray = [
-    {
-      name: "Enterprises",
-    },
-    {
-      name: "Growth Companies",
-    },
-    {
-      name: "Startups",
-    },
-  ];
+  // const linksArray = [
+  //   {
+  //     name: "Enterprises",
+  //   },
+  //   {
+  //     name: "Growth Companies",
+  //   },
+  //   {
+  //     name: "Startups",
+  //   },
+  // ];
 
   return (
     <Box sx={styles.mainContainer}>
@@ -125,7 +136,7 @@ const HeroSection = () => {
           <br></br>
           Software Solutions
         </Typography>
-        <Box sx={styles.linkArray}>
+        {/* <Box sx={styles.linkArray}>
           {linksArray?.map((data, index) => {
             const isLastItem = index === linksArray.length - 1;
             return (
@@ -145,7 +156,7 @@ const HeroSection = () => {
               </Link>
             );
           })}
-        </Box>
+        </Box> */}
         <Box sx={styles.btnContainer}>
           <Button sx={styles.tellUsBtn}>
             Tell Us About Your Project

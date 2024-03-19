@@ -1,13 +1,13 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import Image from "next/image";
 
 import {
   Box,
   AppBar,
-  Typography,
+  // Typography,
   Divider,
   List,
   ListItem,
@@ -17,67 +17,69 @@ import {
   Button,
   Drawer,
   ListItemText,
-  Popover,
+  // Popover,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
-import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
-import ArrowRightIcon from "@mui/icons-material/ArrowRight";
+// import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
+// import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
+// import ArrowRightIcon from "@mui/icons-material/ArrowRight";
 
 import MainLogo from "../../../../public/assets/pngs/header/Header_Logo.png";
+import WhiteLogo from "../../../../public/assets/pngs/header/WhiteLogo.png";
 
 const drawerWidth = 240;
 const navItems = [
+  "Home",
+  "About Company",
   "Services",
-  "Clients",
-  "Company",
-  "Product",
+  // "Clients",
+  // "Product",
   "Careers",
-  "Resources",
+  // "Resources",
 ];
 
-const nextGenArray = [
-  { name: "Data Sciene & AI" },
-  { name: "Cybersecurity" },
-  { name: "Blockchain" },
-];
+// const nextGenArray = [
+//   { name: "Data Sciene & AI" },
+//   { name: "Cybersecurity" },
+//   { name: "Blockchain" },
+// ];
 
-const advisoryArray = [
-  { name: "Digital Transformation" },
-  { name: "Product Strategy" },
-  { name: "Discovery Workshop" },
-  { name: "POC Development" },
-  { name: "Boundary Process Outsourcing" },
-  { name: "Process Consulting & Audit" },
-];
+// const advisoryArray = [
+//   { name: "Digital Transformation" },
+//   { name: "Product Strategy" },
+//   { name: "Discovery Workshop" },
+//   { name: "POC Development" },
+//   { name: "Boundary Process Outsourcing" },
+//   { name: "Process Consulting & Audit" },
+// ];
 
-const productEngineeringArray = [
-  { name: "Application Re Engineering" },
-  { name: "Custom Software Development" },
-  { name: "Web Development" },
-  { name: "Mobile App Development" },
-  { name: "DevOps" },
-];
+// const productEngineeringArray = [
+//   { name: "Application Re Engineering" },
+//   { name: "Custom Software Development" },
+//   { name: "Web Development" },
+//   { name: "Mobile App Development" },
+//   { name: "DevOps" },
+// ];
 
-const solutionsArray = [
-  { name: "Salesforce" },
-  { name: "Service Now" },
-  { name: "Mulesoft" },
-  { name: "AWS" },
-  { name: "Shopify" },
-  { name: "Power BI" },
-];
+// const solutionsArray = [
+//   { name: "Salesforce" },
+//   { name: "Service Now" },
+//   { name: "Mulesoft" },
+//   { name: "AWS" },
+//   { name: "Shopify" },
+//   { name: "Power BI" },
+// ];
 
-const engagementModelArray = [
-  { name: "Dedicated Team" },
-  { name: "Fixed Price" },
-  { name: "OverShore Development Center" },
-];
+// const engagementModelArray = [
+//   { name: "Dedicated Team" },
+//   { name: "Fixed Price" },
+//   { name: "OverShore Development Center" },
+// ];
 
-const cloudServicesArray = [
-  { name: "Cloud Engineering" },
-  { name: "Cloud Migration" },
-];
+// const cloudServicesArray = [
+//   { name: "Cloud Engineering" },
+//   { name: "Cloud Migration" },
+// ];
 
 const buttonStyles = {
   navbar: {
@@ -86,7 +88,7 @@ const buttonStyles = {
     textTransform: "none",
     fontWeight: "300",
     fontFamily: "Poppins",
-    width: "110px",
+    // width: "110px",
     height: "40px",
     transition: "color 0.3s ease",
     letterSpacing: "2px",
@@ -96,14 +98,13 @@ const buttonStyles = {
   },
 
   contactUs: {
-    display: { xs: "none", sm: "flex" },
     color: "#ffffff",
     textTransform: "none",
     backgroundColor: "#378C92",
     fontSize: "16px",
-    width: "130px",
+    width: { xs: "200px", lg: "130px" },
     height: "40px",
-    ml: "2rem",
+    ml: { xs: "0rem", lg: "2rem" },
     transition: "0.5 ease",
     borderRadius: "8px",
     transition: "0.5s ease",
@@ -143,6 +144,7 @@ const buttonStyles = {
     fontWeight: "400",
     fontFamily: "Poppins",
     mt: "1rem",
+    cursor: "pointer",
   },
 
   positionsText: {
@@ -176,10 +178,11 @@ const buttonStyles = {
   },
 };
 
-const DrawerAppBar = (props) => {
-  const { window } = props;
-  const [mobileOpen, setMobileOpen] = React.useState(false);
-  const [anchorEl, setAnchorEl] = React.useState(null);
+const DrawerAppBar = () => {
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
 
   const handlePopoverOpen = (event) => {
     setAnchorEl(event.currentTarget);
@@ -188,9 +191,6 @@ const DrawerAppBar = (props) => {
   const handlePopoverClose = () => {
     setAnchorEl(null);
   };
-
-  const open = Boolean(anchorEl);
-  const id = open ? "simple-popper" : undefined;
 
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
@@ -204,11 +204,28 @@ const DrawerAppBar = (props) => {
     }
   };
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const isScrolled = window.scrollY > 0;
+      if (isScrolled !== scrolled) {
+        setScrolled(isScrolled);
+      }
+    };
+
+    if (typeof window !== "undefined") {
+      window.addEventListener("scroll", handleScroll);
+
+      return () => {
+        window.removeEventListener("scroll", handleScroll);
+      };
+    }
+  }, [scrolled]);
+
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
-      <Typography variant="h6" sx={{ my: 2, color: "#0000000" }}>
-        MUI
-      </Typography>
+      <Box sx={{ padding: "10px" }}>
+        <Image src={MainLogo} width={200} />
+      </Box>
       <Divider />
       <List>
         {navItems.map((item) => (
@@ -222,31 +239,31 @@ const DrawerAppBar = (props) => {
             >
               <ListItemText primary={item} />
             </ListItemButton>
-            <Button sx={buttonStyles.contactUs}>Contact Us</Button>
           </ListItem>
         ))}
       </List>
+      <Button sx={buttonStyles.contactUs}>Contact Us</Button>
     </Box>
   );
-
-  const container =
-    window !== undefined ? () => window().document.body : undefined;
 
   return (
     <Box sx={{ display: "flex" }}>
       <AppBar
         sx={{
-          backgroundColor: open ? "#ffffff" : "transparent",
+          backgroundColor: open || scrolled ? "#ffffff" : "transparent",
           padding: "5px 57px",
           padding: { xs: "5px 10px", lg: "5px 57px" },
 
           boxShadow: "none",
           transition: "background-color 1s ease",
           "& .nav-btn": {
-            color: open ? "#000000" : "#ffffff",
+            color: open || scrolled ? "#000000" : "#ffffff",
           },
           "&:hover": {
             backgroundColor: "#ffffff",
+            "& .menu-btn": {
+              color: "#000000",
+            },
             "& .nav-btn": {
               color: "#000000",
             },
@@ -257,7 +274,12 @@ const DrawerAppBar = (props) => {
         }}
         component="nav"
       >
-        <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
+        <Toolbar
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+          }}
+        >
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -265,10 +287,13 @@ const DrawerAppBar = (props) => {
             onClick={handleDrawerToggle}
             sx={{ mr: 2, display: { lg: "none" } }}
           >
-            <MenuIcon />
+            <MenuIcon
+              className="menu-btn"
+              sx={{ color: scrolled || open ? "#000000" : "#ffffff" }}
+            />
           </IconButton>
 
-          <Image src={MainLogo} width={200} />
+          <Image src={scrolled || open ? MainLogo : WhiteLogo} width={200} />
 
           <Box
             sx={{
@@ -278,16 +303,26 @@ const DrawerAppBar = (props) => {
             }}
           >
             <Button
-              aria-owns={open ? "mouse-over-popover" : undefined}
-              aria-haspopup="true"
-              onMouseEnter={handleServicesButtonClick}
+              style={{ color: "#378C92", fontWeight: "600" }}
               sx={buttonStyles.navbar}
               className="nav-btn"
-              endIcon={open ? <ArrowDropUpIcon /> : <ArrowDropDownIcon />}
+            >
+              Home
+            </Button>
+            <Button sx={buttonStyles.navbar} className="nav-btn">
+              About Company
+            </Button>{" "}
+            <Button
+              // aria-owns={open ? "mouse-over-popover" : undefined}
+              aria-haspopup="true"
+              // onMouseEnter={handleServicesButtonClick}
+              sx={buttonStyles.navbar}
+              className="nav-btn"
+              // endIcon={open ? <ArrowDropUpIcon /> : <ArrowDropDownIcon />}
             >
               Services
             </Button>
-            <Popover
+            {/* <Popover
               id="mouse-over-popover"
               sx={{
                 pointerEvents: "none",
@@ -427,29 +462,25 @@ const DrawerAppBar = (props) => {
                   Product Leader
                 </Typography>
               </Box>
-            </Popover>
-            <Button sx={buttonStyles.navbar} className="nav-btn">
+            </Popover> */}
+            {/* <Button sx={buttonStyles.navbar} className="nav-btn">
               Clients
-            </Button>{" "}
-            <Button sx={buttonStyles.navbar} className="nav-btn">
-              Company
-            </Button>{" "}
-            <Button sx={buttonStyles.navbar} className="nav-btn">
+            </Button>{" "} */}
+            {/* <Button sx={buttonStyles.navbar} className="nav-btn">
               Product
-            </Button>{" "}
+            </Button>{" "} */}
             <Button sx={buttonStyles.navbar} className="nav-btn">
               Career
             </Button>
-            <Button sx={buttonStyles.navbar} className="nav-btn">
+            {/* <Button sx={buttonStyles.navbar} className="nav-btn">
               Resources
-            </Button>
+            </Button> */}
             <Button sx={buttonStyles.contactUs}>Contact Us</Button>
           </Box>
         </Toolbar>
       </AppBar>
       <nav>
         <Drawer
-          container={container}
           variant="temporary"
           open={mobileOpen}
           onClose={handleDrawerToggle}
