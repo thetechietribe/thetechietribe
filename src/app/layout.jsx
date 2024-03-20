@@ -1,5 +1,5 @@
-import Footer from "./components/footer/footer";
-import DrawerAppBar from "./components/header/header";
+// import Footer from "./components/footer/footer";
+// import DrawerAppBar from "./components/header/header";
 import "./globals.css";
 
 export const metadata = {
@@ -25,9 +25,9 @@ export default function RootLayout({ children }) {
               padding: "0",
             }}
           >
-            <DrawerAppBar />
+            {/* <DrawerAppBar /> */}
             {children}
-            <Footer />
+            {/* <Footer /> */}
           </div>
         </main>
       </body>

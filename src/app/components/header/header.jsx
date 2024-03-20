@@ -30,8 +30,8 @@ import WhiteLogo from "../../../../public/assets/pngs/header/WhiteLogo.png";
 const drawerWidth = 240;
 const navItems = [
   "Home",
-  "About Company",
   "Services",
+  "About Company",
   // "Clients",
   // "Product",
   "Careers",
@@ -178,11 +178,21 @@ const buttonStyles = {
   },
 };
 
-const DrawerAppBar = () => {
+const DrawerAppBar = ({
+  scrollToServices,
+  scrollToAbout,
+  scrollToBottom,
+  scrollToHome,
+  activeSection,
+}) => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
+
+  const isActive = (sectionName) => {
+    return activeSection === sectionName ? true : false;
+  };
 
   const handlePopoverOpen = (event) => {
     setAnchorEl(event.currentTarget);
@@ -256,9 +266,6 @@ const DrawerAppBar = () => {
 
           boxShadow: "none",
           transition: "background-color 1s ease",
-          "& .nav-btn": {
-            color: open || scrolled ? "#000000" : "#ffffff",
-          },
           "&:hover": {
             backgroundColor: "#ffffff",
             "& .menu-btn": {
@@ -303,25 +310,78 @@ const DrawerAppBar = () => {
             }}
           >
             <Button
-              style={{ color: "#378C92", fontWeight: "600" }}
-              sx={buttonStyles.navbar}
+              sx={{
+                color: isActive("home")
+                  ? "#378C92"
+                  : scrolled
+                  ? "#000000"
+                  : "#ffffff",
+                fontWeight: isActive("home") ? "600" : "300",
+                fontSize: "16px",
+                textTransform: "none",
+                fontFamily: "Poppins",
+                height: "40px",
+                transition: "color 0.3s ease",
+                letterSpacing: "2px",
+                "&:hover": {
+                  color: "#0654b7",
+                },
+              }}
               className="nav-btn"
+              onClick={scrollToHome}
             >
               Home
             </Button>
-            <Button sx={buttonStyles.navbar} className="nav-btn">
-              About Company
-            </Button>{" "}
             <Button
+              onClick={scrollToServices}
               // aria-owns={open ? "mouse-over-popover" : undefined}
               aria-haspopup="true"
               // onMouseEnter={handleServicesButtonClick}
-              sx={buttonStyles.navbar}
               className="nav-btn"
+              sx={{
+                color: isActive("services")
+                  ? "#378C92"
+                  : scrolled
+                  ? "#000000"
+                  : "#ffffff",
+                fontWeight: isActive("services") ? "600" : "300",
+                fontSize: "16px",
+                textTransform: "none",
+                fontFamily: "Poppins",
+                height: "40px",
+                transition: "color 0.3s ease",
+                letterSpacing: "2px",
+                "&:hover": {
+                  color: "#0654b7",
+                },
+              }}
               // endIcon={open ? <ArrowDropUpIcon /> : <ArrowDropDownIcon />}
             >
               Services
             </Button>
+            <Button
+              onClick={scrollToAbout}
+              sx={{
+                color: isActive("about")
+                  ? "#378C92"
+                  : scrolled
+                  ? "#000000"
+                  : "#ffffff",
+                fontWeight: isActive("about") ? "600" : "300",
+                fontSize: "16px",
+                textTransform: "none",
+                fontFamily: "Poppins",
+                height: "40px",
+                transition: "color 0.3s ease",
+                letterSpacing: "2px",
+                "&:hover": {
+                  color: "#0654b7",
+                },
+              }}
+              className="nav-btn"
+            >
+              About Company
+            </Button>{" "}
             {/* <Popover
               id="mouse-over-popover"
               sx={{
@@ -469,13 +529,15 @@ const DrawerAppBar = () => {
             {/* <Button sx={buttonStyles.navbar} className="nav-btn">
               Product
             </Button>{" "} */}
-            <Button sx={buttonStyles.navbar} className="nav-btn">
+            {/* <Button sx={buttonStyles.navbar} className="nav-btn">
               Career
-            </Button>
+            </Button> */}
             {/* <Button sx={buttonStyles.navbar} className="nav-btn">
               Resources
             </Button> */}
-            <Button sx={buttonStyles.contactUs}>Contact Us</Button>
+            <Button onClick={scrollToBottom} sx={buttonStyles.contactUs}>
+              Contact Us
+            </Button>
           </Box>
         </Toolbar>
       </AppBar>
