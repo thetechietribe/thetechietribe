@@ -6,6 +6,8 @@ import Services from "./components/home/services";
 import About from "./components/home/about";
 import DrawerAppBar from "./components/header/header";
 import Footer from "./components/footer/footer";
+import TechnologyIndex from "./components/home/technologyIndex";
+import EngagementPlan from "./components/home/engagementPlan";
 
 const Home = () => {
   const [activeSection, setActiveSection] = useState("home");
@@ -46,12 +48,14 @@ const Home = () => {
       <div ref={homeRef}>
         <HeroSection />
       </div>
+      <TechnologyIndex />
       <div ref={servicesRef}>
         <Services />
       </div>
       <div ref={aboutRef}>
         <About />
       </div>
+      <EngagementPlan />
       <div ref={footerRef}>
         <Footer />
       </div>
