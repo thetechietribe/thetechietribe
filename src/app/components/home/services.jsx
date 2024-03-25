@@ -23,12 +23,16 @@ const styles = {
     fontFamily: "Poppins",
     fontWeight: "400",
     color: "#378C92",
+    textDecoration: "underline",
+    textDecorationColor: "#313431",
+    textDecorationThickness: "2px",
+    textUnderlineOffset: "4px",
   },
   subHeading: {
     fontSize: { xs: "20px", lg: "40px" },
     fontFamily: "Poppins",
     fontWeight: "600",
-    color: "#000000",
+    color: "#313431",
     textAlign: "center",
   },
   cardContainer: {
@@ -78,7 +82,7 @@ const styles = {
     lineHeight: "1.2",
     fontFamily: "Poppins",
     fontWeight: "500",
-    color: "#000000",
+    color: "#313431",
     mt: "1rem",
     "&:hover": {
       color: "#378C92",
@@ -88,7 +92,7 @@ const styles = {
     fontSize: "14px",
     fontFamily: "Poppins",
     fontWeight: "400",
-    color: "#000000",
+    color: "#313431",
     mt: "1rem",
   },
 };

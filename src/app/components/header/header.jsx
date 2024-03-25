@@ -112,7 +112,7 @@ const buttonStyles = {
     letterSpacing: "2px",
     transition: "background-color 0.3s ease",
     "&&:hover": {
-      backgroundColor: "#000000",
+      backgroundColor: "#313431",
     },
   },
 
@@ -151,7 +151,7 @@ const buttonStyles = {
     backgroundColor: "#ECECEC",
     borderRadius: "24px",
     fontSize: "16px",
-    color: "#000000",
+    color: "#313431",
     padding: "8px 16px",
     fontWeight: "400",
   },
@@ -242,7 +242,7 @@ const DrawerAppBar = ({
           <ListItem key={item} disablePadding>
             <ListItemButton
               sx={{
-                color: "#000000",
+                color: "#313431",
                 textTransform: "none",
                 textAlign: "center",
               }}
@@ -269,10 +269,10 @@ const DrawerAppBar = ({
           "&:hover": {
             backgroundColor: "#ffffff",
             "& .menu-btn": {
-              color: "#000000",
+              color: "#313431",
             },
             "& .nav-btn": {
-              color: "#000000",
+              color: "#313431",
             },
             "& .TechieTribe": {
               color: "#0654b7",
@@ -296,7 +296,7 @@ const DrawerAppBar = ({
           >
             <MenuIcon
               className="menu-btn"
-              sx={{ color: scrolled || open ? "#000000" : "#ffffff" }}
+              sx={{ color: scrolled || open ? "#313431" : "#ffffff" }}
             />
           </IconButton>
 
@@ -314,7 +314,7 @@ const DrawerAppBar = ({
                 color: isActive("home")
                   ? "#378C92"
                   : scrolled
-                  ? "#000000"
+                  ? "#313431"
                   : "#ffffff",
                 fontWeight: isActive("home") ? "600" : "300",
                 fontSize: "16px",
@@ -342,7 +342,7 @@ const DrawerAppBar = ({
                 color: isActive("services")
                   ? "#378C92"
                   : scrolled
-                  ? "#000000"
+                  ? "#313431"
                   : "#ffffff",
                 fontWeight: isActive("services") ? "600" : "300",
                 fontSize: "16px",
@@ -365,7 +365,7 @@ const DrawerAppBar = ({
                 color: isActive("about")
                   ? "#378C92"
                   : scrolled
-                  ? "#000000"
+                  ? "#313431"
                   : "#ffffff",
                 fontWeight: isActive("about") ? "600" : "300",
                 fontSize: "16px",

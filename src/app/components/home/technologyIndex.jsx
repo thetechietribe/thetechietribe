@@ -43,6 +43,10 @@ const styles = {
     fontWeight: "400",
     color: "#378C92",
     marginBottom: "20px",
+    textDecoration: "underline",
+    textDecorationColor: "#313431",
+    textDecorationThickness: "2px",
+    textUnderlineOffset: "4px",
   },
 
   iconContainer: {

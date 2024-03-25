@@ -67,7 +67,7 @@ const styles = {
     transition: "background-color 0.3s ease",
     letterSpacing: "2px",
     "&&:hover": {
-      backgroundColor: "#000000",
+      backgroundColor: "#313431",
     },
   },
   btnContainer: {

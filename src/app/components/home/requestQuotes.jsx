@@ -20,18 +20,22 @@ const styles = {
     fontFamily: "Poppins",
     fontWeight: "400",
     color: "#378C92",
+    textDecoration: "underline",
+    textDecorationColor: "#313431",
+    textDecorationThickness: "2px",
+    textUnderlineOffset: "4px",
   },
   subHeading: {
     fontSize: { xs: "20px", lg: "40px" },
     fontFamily: "Poppins",
     fontWeight: "600",
-    color: "#000000",
+    color: "#313431",
   },
   aboutContent: {
     fontSize: "14px",
     fontFamily: "Poppins",
     fontWeight: "400",
-    color: "#000000",
+    color: "#313431",
     mt: "1rem",
     lineHeight: "2",
   },
@@ -41,7 +45,7 @@ const styles = {
     fontFamily: "Poppins",
     fontWeight: "600",
     color: "#378C92",
-    mt: "1rem",
+    mt: "4rem",
   },
 
   hqContent: {
@@ -55,7 +59,7 @@ const styles = {
     fontSize: "20px",
     fontFamily: "Poppins",
     fontWeight: "400",
-    color: "#000000",
+    color: "#313431",
     cursor: "pointer",
 
     "&:hover": {
@@ -67,7 +71,7 @@ const styles = {
     fontSize: "20px",
     fontFamily: "Poppins",
     fontWeight: "600",
-    color: "#000000",
+    color: "#313431",
   },
 
   textField: {
@@ -124,7 +128,7 @@ const styles = {
     transition: "background-color 0.3s ease",
     letterSpacing: "2px",
     "&&:hover": {
-      backgroundColor: "#000000",
+      backgroundColor: "#313431",
     },
   },
 };
@@ -158,11 +162,11 @@ const RequestQuote = () => {
 
         <Typography sx={styles.hqHeading}>Headquarters</Typography>
         <Box sx={styles.hqContent}>
-          <LocalPhoneRoundedIcon sx={{ color: "#000000", fontSize: "20px" }} />
+          <LocalPhoneRoundedIcon sx={{ color: "#313431", fontSize: "20px" }} />
           <Typography sx={styles.contact}>+92 300 456 1162</Typography>
         </Box>
         <Box sx={styles.hqContent}>
-          <RoomIcon sx={{ color: "#000000", fontSize: "20px" }} />
+          <RoomIcon sx={{ color: "#313431", fontSize: "20px" }} />
           <Typography sx={styles.contact}>Lahore, Pakistan</Typography>
         </Box>
       </Box>
