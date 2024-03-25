@@ -3,9 +3,10 @@
 import React, { useState } from "react";
 
 import { Box, TextField, Typography, MenuItem, Button } from "@mui/material";
-
 import LocalPhoneRoundedIcon from "@mui/icons-material/LocalPhoneRounded";
 import RoomIcon from "@mui/icons-material/Room";
+
+import { MuiTelInput } from "mui-tel-input";
 
 const styles = {
   mainContainer: {
@@ -135,9 +136,13 @@ const styles = {
 
 const RequestQuote = () => {
   const [selectValue, setSelectValue] = useState("");
+  const [number, setNumber] = useState("pk");
 
   const handleChange = (event) => {
     setSelectValue(event.target.value);
+  };
+  const handleChangeNumber = (newValue) => {
+    setNumber(newValue);
   };
 
   return (
@@ -202,7 +207,12 @@ const RequestQuote = () => {
           }}
         >
           <TextField label="Email" sx={styles.textField} />
-          <TextField label="Phone Number" sx={styles.textField} />
+          <MuiTelInput
+            sx={styles.textField}
+            value={number}
+            onChange={handleChangeNumber}
+            defaultCountry="pk"
+          />
         </Box>
         <Box sx={{ display: "flex", width: "100%", mt: "1rem" }}>
           <TextField
