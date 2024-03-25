@@ -8,6 +8,7 @@ import DrawerAppBar from "./components/header/header";
 import Footer from "./components/footer/footer";
 import TechnologyIndex from "./components/home/technologyIndex";
 import EngagementPlan from "./components/home/engagementPlan";
+import RequestQuote from "./components/home/requestQuotes";
 
 const Home = () => {
   const [activeSection, setActiveSection] = useState("home");
@@ -57,8 +58,9 @@ const Home = () => {
       </div>
       <EngagementPlan />
       <div ref={footerRef}>
-        <Footer />
+        <RequestQuote />
       </div>
+      <Footer />
     </>
   );
 };
