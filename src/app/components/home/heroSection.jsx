@@ -4,6 +4,7 @@ import React from "react";
 
 import { Box, Button, Link, Typography } from "@mui/material";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import HeroSectionVideo from "../../../../public/assets/video/HeroSectionVideo.mp4";
 // import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
 
 const styles = {
@@ -121,10 +122,7 @@ const HeroSection = () => {
     <Box sx={styles.mainContainer}>
       <Box sx={styles.videoContainer}>
         <video playsInline autoPlay muted loop style={styles.video}>
-          <source
-            type="video/mp4"
-            src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"
-          />
+          <source type="video/mp4" src={HeroSectionVideo} />
         </video>
       </Box>
 
