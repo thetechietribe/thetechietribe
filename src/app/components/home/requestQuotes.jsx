@@ -1,11 +1,8 @@
-"use client";
-
 import React, { useState } from "react";
-
+import emailjs from "@emailjs/browser";
 import { Box, TextField, Typography, MenuItem, Button } from "@mui/material";
 import LocalPhoneRoundedIcon from "@mui/icons-material/LocalPhoneRounded";
 import RoomIcon from "@mui/icons-material/Room";
-
 import { MuiTelInput } from "mui-tel-input";
 
 const styles = {
@@ -77,22 +74,19 @@ const styles = {
 
   textField: {
     width: "100%",
-    borderRadius: "10px",
+    backgroundColor: "#F6F6F9",
     "& label.Mui-focused": {
       color: "#378C92",
-      borderRadius: "10px",
       width: "200px",
     },
 
     "& .MuiOutlinedInput-root": {
       "& fieldset": {
         borderColor: "#378C92",
-        borderRadius: "10px",
       },
 
       "&.Mui-focused fieldset": {
         borderColor: "#378C92",
-        borderRadius: "10px",
       },
     },
   },
@@ -117,15 +111,14 @@ const styles = {
   },
 
   aboutBtn: {
-    mt: "1rem",
+    mt: "1.5rem",
     color: "#ffffff",
     textTransform: "none",
     backgroundColor: "#378C92",
-    fontSize: "20px",
-    height: "30px",
-    width: { xs: "100%", lg: "150px" },
-    padding: { xs: "20px", lg: "20px 40px" },
-    borderRadius: "8px",
+    fontSize: "18px",
+    height: "40px",
+    width: { xs: "100%", lg: "140px" },
+    padding: { xs: "20px", lg: "25px 30px" },
     transition: "background-color 0.3s ease",
     letterSpacing: "2px",
     "&&:hover": {
@@ -133,7 +126,6 @@ const styles = {
     },
   },
 };
-
 const RequestQuote = () => {
   const [selectValue, setSelectValue] = useState("");
   const [number, setNumber] = useState("pk");
@@ -141,8 +133,44 @@ const RequestQuote = () => {
   const handleChange = (event) => {
     setSelectValue(event.target.value);
   };
+
   const handleChangeNumber = (newValue) => {
     setNumber(newValue);
+  };
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    const firstName = e.target.elements.firstName.value;
+    const lastName = e.target.elements.lastName.value;
+    const email = e.target.elements.email.value;
+    const phoneNumber = e.target.elements.phoneNumber.value;
+    const message = e.target.elements.message.value;
+
+    const params = {
+      firstName: firstName,
+      lastName: lastName,
+      email: email,
+      phoneNumber: phoneNumber,
+      message: message,
+    };
+
+    console.log("=====params=====", params);
+
+    emailjs
+      .send(
+        process.env.REACT_APP_SERVICE_ID,
+        process.env.REACT_APP_TEMPLATE_ID,
+        params,
+        process.env.REACT_APP_PUBLIC_KEY
+      )
+      .then((response) => {
+        console.log("Email successfully sent!", response);
+        e.target.reset();
+      })
+      .catch((error) => {
+        console.error("Email sending failed:", error);
+      });
   };
 
   return (
@@ -176,10 +204,12 @@ const RequestQuote = () => {
         </Box>
       </Box>
       <Box
+        component="form"
+        onSubmit={sendEmail}
         sx={{
           width: { xs: "100%", lg: "50%" },
           mt: { xs: "2rem", lg: "0rem" },
-          borderRadius: "20px",
+          // borderRadius: "20px",
           boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
           padding: "20px",
         }}
@@ -194,34 +224,53 @@ const RequestQuote = () => {
             flexDirection: { xs: "column", lg: "row" },
           }}
         >
-          <TextField label="First Name" sx={styles.textField} />
-          <TextField label="Last Name" sx={styles.textField} />
+          <TextField
+            size="small"
+            name="firstName"
+            placeholder="First Name"
+            sx={styles.textField}
+          />
+          <TextField
+            size="small"
+            name="lastName"
+            placeholder="Last Name"
+            sx={styles.textField}
+          />
         </Box>
         <Box
           sx={{
             display: "flex",
             gap: "1rem",
             width: "100%",
-            mt: "1rem",
+            mt: "1.5rem",
             flexDirection: { xs: "column", lg: "row" },
           }}
         >
-          <TextField label="Email" sx={styles.textField} />
-          <MuiTelInput
+          <TextField
+            size="small"
+            name="email"
+            placeholder="Email"
             sx={styles.textField}
+          />
+          <MuiTelInput
+            size="small"
+            name="phoneNumber"
             value={number}
             onChange={handleChangeNumber}
             defaultCountry="pk"
+            sx={styles.textField}
           />
         </Box>
-        <Box sx={{ display: "flex", width: "100%", mt: "1rem" }}>
+        <Box sx={{ display: "flex", width: "100%", mt: "1.5rem" }}>
           <TextField
-            sx={styles.textField}
+            size="small"
+            name="select"
             id="select"
             label="How did you hear about us?"
             value={selectValue}
             select
             onChange={handleChange}
+            sx={styles.textField}
           >
             <MenuItem value="facebook">Facebook</MenuItem>
             <MenuItem value="instagram">Instagram</MenuItem>
@@ -229,11 +278,19 @@ const RequestQuote = () => {
           </TextField>
         </Box>
 
-        <Box sx={{ display: "flex", width: "100%", mt: "1rem" }}>
-          <TextField sx={styles.textField} label="Message" multiline rows={4} />
+        <Box sx={{ display: "flex", width: "100%", mt: "1.5rem" }}>
+          <TextField
+            name="message"
+            placeholder="Message"
+            multiline
+            rows={4}
+            sx={styles.textField}
+          />
         </Box>
 
-        <Button sx={styles.aboutBtn}>Submit</Button>
+        <Button type="submit" sx={styles.aboutBtn}>
+          Submit
+        </Button>
       </Box>
     </Box>
   );

@@ -39,7 +39,7 @@ const styles = {
   cardContainer: {
     display: "flex",
     flexDirection: "column",
-    padding: "30px",
+    padding: "40px 30px",
     borderRadius: "20px",
     width: "100%",
     mt: "2rem",
@@ -49,6 +49,17 @@ const styles = {
       backgroundColor: "#378C92",
       "& .text": {
         color: "#ffffff",
+      },
+
+      "& .quoteBtn": {
+        backgroundColor: "transparent",
+        color: "#ffffff",
+        border: "1px solid #ffffff",
+      },
+
+      "& .popular": {
+        color: "#ffffff",
+        backgroundColor: "#97AFAE",
       },
       "& .icon": {
         backgroundColor: "#ffffff",
@@ -69,7 +80,7 @@ const styles = {
     fontSize: "14px",
     fontFamily: "Poppins",
     fontWeight: "500",
-    color: "#378C92",
+    color: "#313431",
   },
 
   cardHeading: {
@@ -82,14 +93,14 @@ const styles = {
   cardData: {
     fontSize: "14px",
     fontFamily: "Poppins",
-    fontWeight: "500",
+    fontWeight: "400",
     color: "#00000",
   },
 
   cardTagline: {
     fontSize: "16px",
     fontFamily: "Poppins",
-    fontWeight: "600",
+    fontWeight: "400",
     color: "#00000",
   },
 
@@ -101,15 +112,15 @@ const styles = {
     border: "1px solid #378C92",
     fontSize: "16px",
     width: { xs: "200px", lg: "150px" },
-    height: "50px",
+    height: "45px",
     transition: "0.5 ease",
-    borderRadius: "8px",
     transition: "0.5s ease",
-    borderRadius: "8px",
     letterSpacing: "2px",
 
     "&:hover": {
-      backgroundColor: "#ffffff",
+      backgroundColor: "transparent",
+      color: "#ffffff",
+      border: "1px solid #ffffff",
     },
   },
 };
@@ -164,7 +175,7 @@ const EngagementPlan = () => {
       <Box
         sx={{
           display: "flex",
-          gap: "3rem",
+          gap: "2rem",
           width: "100%",
           flexDirection: { xs: "column", lg: "row" },
         }}
@@ -211,27 +222,48 @@ const EngagementPlan = () => {
             </Box>
           ))}
 
-          <Button sx={styles.quoteBtn}>Get A Quote</Button>
+          <Button className="quoteBtn" sx={styles.quoteBtn}>
+            Get A Quote
+          </Button>
         </Card>
         <Card sx={styles.cardContainer}>
-          <Box sx={{ display: "flex", gap: "1rem", mb: "1rem" }}>
-            <Box sx={styles.iconContainer} className="icon">
-              <Person2RoundedIcon sx={{ fontSize: "35px", color: "#378C92" }} />
+          <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+            <Box sx={{ display: "flex", gap: "1rem", mb: "1rem" }}>
+              <Box sx={styles.iconContainer} className="icon">
+                <Person2RoundedIcon
+                  sx={{ fontSize: "35px", color: "#378C92" }}
+                />
+              </Box>
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                }}
+              >
+                <Typography sx={styles.cardTopText} className="text">
+                  For Dedicated Teams
+                </Typography>
+                <Typography sx={styles.cardHeading} className="text">
+                  IT Experts
+                </Typography>
+              </Box>
             </Box>
-            <Box
+            <Typography
               sx={{
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "center",
+                display: { xs: "none", lg: "flex" },
+                backgroundColor: "#F6F6F9",
+                fontSize: "16px",
+                color: "#313431",
+                borderRadius: "12px",
+                padding: "5px 25px",
+                height: "max-content",
+                fontWeight: "00",
               }}
+              className="popular"
             >
-              <Typography sx={styles.cardTopText} className="text">
-                For Dedicated Teams
-              </Typography>
-              <Typography sx={styles.cardHeading} className="text">
-                IT Experts
-              </Typography>
-            </Box>
+              Popular
+            </Typography>
           </Box>
 
           <Typography sx={styles.cardTagline} className="text">
@@ -247,21 +279,15 @@ const EngagementPlan = () => {
                 sx={{ color: "#378C92", borderRadius: "10px" }}
                 className="text"
               />
-              <Typography
-                sx={{
-                  fontSize: "14px",
-                  fontFamily: "Poppins",
-                  fontWeight: "500",
-                  color: "#00000",
-                }}
-                className="text"
-              >
+              <Typography sx={styles.cardData} className="text">
                 {item.content}
               </Typography>
             </Box>
           ))}
 
-          <Button sx={styles.quoteBtn}>Get A Quote</Button>
+          <Button className="quoteBtn" sx={styles.quoteBtn}>
+            Get A Quote
+          </Button>
         </Card>
       </Box>
     </Box>
