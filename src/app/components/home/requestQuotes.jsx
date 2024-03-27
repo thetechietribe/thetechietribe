@@ -8,10 +8,12 @@ import { MuiTelInput } from "mui-tel-input";
 const styles = {
   mainContainer: {
     display: "flex",
-    flexDirection: { xs: "column", lg: "row" },
+    flexDirection: { xs: "column", md: "row" },
     justifyContent: "center",
-    padding: { xs: "40px", lg: "80px" },
+    padding: { xs: "40px 15px", lg: "80px 0px" },
     backgroundColor: "#ffffff",
+    margin: "auto",
+    width: { xs: "100%", md: "63rem", lg: "80rem" },
   },
   heading: {
     fontSize: "20px",
@@ -24,7 +26,7 @@ const styles = {
     textUnderlineOffset: "4px",
   },
   subHeading: {
-    fontSize: { xs: "20px", lg: "40px" },
+    fontSize: { xs: "20px", md: "40px" },
     fontFamily: "Poppins",
     fontWeight: "600",
     color: "#313431",
@@ -82,7 +84,7 @@ const styles = {
 
     "& .MuiOutlinedInput-root": {
       "& fieldset": {
-        borderColor: "#378C92",
+        borderColor: "lightgray",
       },
 
       "&.Mui-focused fieldset": {
@@ -110,6 +112,11 @@ const styles = {
     },
   },
 
+  aboutBtnContainer: {
+    display: "flex",
+    justifyContent: "flex-end",
+  },
+
   aboutBtn: {
     mt: "1.5rem",
     color: "#ffffff",
@@ -117,9 +124,10 @@ const styles = {
     backgroundColor: "#378C92",
     fontSize: "18px",
     height: "40px",
-    width: { xs: "100%", lg: "140px" },
-    padding: { xs: "20px", lg: "25px 30px" },
+    width: { xs: "100%", md: "140px" },
+    padding: { xs: "20px", md: "25px 30px" },
     transition: "background-color 0.3s ease",
+    borderRadius: "8px",
     letterSpacing: "2px",
     "&&:hover": {
       backgroundColor: "#313431",
@@ -128,7 +136,7 @@ const styles = {
 };
 const RequestQuote = () => {
   const [selectValue, setSelectValue] = useState("");
-  const [number, setNumber] = useState("pk");
+  const [number, setNumber] = useState("");
 
   const handleChange = (event) => {
     setSelectValue(event.target.value);
@@ -155,8 +163,6 @@ const RequestQuote = () => {
       message: message,
     };
 
-    console.log("=====params=====", params);
-
     emailjs
       .send(
         process.env.REACT_APP_SERVICE_ID,
@@ -174,123 +180,174 @@ const RequestQuote = () => {
   };
 
   return (
-    <Box sx={styles.mainContainer}>
-      <Box
-        sx={{
-          width: { xs: "100%", lg: "50%" },
-          mt: { xs: "2rem", lg: "0rem" },
-        }}
-      >
-        <Typography sx={styles.heading}>REQUEST A QUOTE</Typography>
-        <Typography sx={styles.subHeading}>
-          Embrace Innovation With Advance Technologies
-        </Typography>
-        <Typography sx={styles.aboutContent}>
-          At Techietribe, we use cutting-edge programming technology to generate
-          creative solutions that are customized to your requirements. Because
-          of the wide range of programming languages and technologies that our
-          team specializes in, we are able to create reliable systems, websites,
-          and apps.
-        </Typography>
+    <Box sx={{ backgroundColor: "#ffffff" }}>
+      <Box sx={styles.mainContainer}>
+        <Box
+          sx={{
+            width: { xs: "100%", md: "50%" },
+            mt: { xs: "2rem", md: "0rem" },
+          }}
+        >
+          <Typography sx={styles.heading}>REQUEST A QUOTE</Typography>
+          <Typography sx={styles.subHeading}>
+            Embrace Innovation With Advance Technologies
+          </Typography>
+          <Typography sx={styles.aboutContent}>
+            At Techietribe, we use cutting-edge programming technology to
+            generate creative solutions that are customized to your
+            requirements. Because of the wide range of programming languages and
+            technologies that our team specializes in, we are able to create
+            reliable systems, websites, and apps.
+          </Typography>
 
-        <Typography sx={styles.hqHeading}>Headquarters</Typography>
-        <Box sx={styles.hqContent}>
-          <LocalPhoneRoundedIcon sx={{ color: "#313431", fontSize: "20px" }} />
-          <Typography sx={styles.contact}>+92 300 456 1162</Typography>
-        </Box>
-        <Box sx={styles.hqContent}>
-          <RoomIcon sx={{ color: "#313431", fontSize: "20px" }} />
-          <Typography sx={styles.contact}>Lahore, Pakistan</Typography>
-        </Box>
-      </Box>
-      <Box
-        component="form"
-        onSubmit={sendEmail}
-        sx={{
-          width: { xs: "100%", lg: "50%" },
-          mt: { xs: "2rem", lg: "0rem" },
-          // borderRadius: "20px",
-          boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
-          padding: "20px",
-        }}
-      >
-        <Typography sx={styles.formHeading}>Get in touch with us</Typography>
-        <Box
-          sx={{
-            display: "flex",
-            gap: "1rem",
-            width: "100%",
-            mt: "1rem",
-            flexDirection: { xs: "column", lg: "row" },
-          }}
-        >
-          <TextField
-            size="small"
-            name="firstName"
-            placeholder="First Name"
-            sx={styles.textField}
-          />
-          <TextField
-            size="small"
-            name="lastName"
-            placeholder="Last Name"
-            sx={styles.textField}
-          />
+          <Typography sx={styles.hqHeading}>Headquarters</Typography>
+          <Box sx={styles.hqContent}>
+            <LocalPhoneRoundedIcon
+              sx={{ color: "#313431", fontSize: "20px" }}
+            />
+            <Typography sx={styles.contact}>+92 300 456 1162</Typography>
+          </Box>
+          <Box sx={styles.hqContent}>
+            <RoomIcon sx={{ color: "#313431", fontSize: "20px" }} />
+            <Typography sx={styles.contact}>Lahore, Pakistan</Typography>
+          </Box>
         </Box>
         <Box
+          component="form"
+          onSubmit={sendEmail}
           sx={{
-            display: "flex",
-            gap: "1rem",
-            width: "100%",
-            mt: "1.5rem",
-            flexDirection: { xs: "column", lg: "row" },
+            border: "1px solid lightgray",
+            width: { xs: "100%", md: "50%" },
+            mt: { xs: "2rem", md: "0rem" },
+            padding: "20px",
           }}
         >
-          <TextField
-            size="small"
-            name="email"
-            placeholder="Email"
-            sx={styles.textField}
-          />
-          <MuiTelInput
-            size="small"
-            name="phoneNumber"
-            value={number}
-            onChange={handleChangeNumber}
-            defaultCountry="pk"
-            sx={styles.textField}
-          />
-        </Box>
-        <Box sx={{ display: "flex", width: "100%", mt: "1.5rem" }}>
-          <TextField
-            size="small"
-            name="select"
-            id="select"
-            label="How did you hear about us?"
-            value={selectValue}
-            select
-            onChange={handleChange}
-            sx={styles.textField}
+          <Typography sx={styles.formHeading}>Get in touch with us</Typography>
+          <Box
+            sx={{
+              display: "flex",
+              gap: "1rem",
+              width: "100%",
+              mt: "1rem",
+              flexDirection: { xs: "column", md: "row" },
+            }}
           >
-            <MenuItem value="facebook">Facebook</MenuItem>
-            <MenuItem value="instagram">Instagram</MenuItem>
-            <MenuItem value="linkedin">LinkedIn</MenuItem>
-          </TextField>
-        </Box>
+            <TextField
+              size="small"
+              name="firstName"
+              placeholder="First Name"
+              sx={styles.textField}
+              inputProps={{
+                sx: {
+                  "&::placeholder": {
+                    color: "gray",
+                    opacity: 0.5,
+                  },
+                },
+              }}
+            />
+            <TextField
+              size="small"
+              name="lastName"
+              placeholder="Last Name"
+              sx={styles.textField}
+              inputProps={{
+                sx: {
+                  "&::placeholder": {
+                    color: "gray",
+                    opacity: 0.5,
+                  },
+                },
+              }}
+            />
+          </Box>
+          <Box
+            sx={{
+              display: "flex",
+              gap: "1rem",
+              width: "100%",
+              mt: "1.5rem",
+              flexDirection: { xs: "column", md: "row" },
+            }}
+          >
+            <TextField
+              size="small"
+              name="email"
+              placeholder="Email"
+              sx={styles.textField}
+              inputProps={{
+                sx: {
+                  "&::placeholder": {
+                    color: "gray",
+                    opacity: 0.5,
+                  },
+                },
+              }}
+            />
+            <MuiTelInput
+              size="small"
+              name="phoneNumber"
+              value={number}
+              onChange={handleChangeNumber}
+              sx={styles.textField}
+              defaultCountry="PK"
+              inputProps={{
+                sx: {
+                  "&::placeholder": {
+                    color: "gray",
+                    opacity: 0.5,
+                  },
+                },
+              }}
+            />
+          </Box>
+          <Box sx={{ display: "flex", width: "100%", mt: "1.5rem" }}>
+            <TextField
+              size="small"
+              name="select"
+              id="select"
+              label="How did you hear about us?"
+              value={selectValue}
+              select
+              onChange={handleChange}
+              sx={styles.textField}
+              InputLabelProps={{
+                style: {
+                  color: "gray",
+                  opacity: 0.5,
+                },
+              }}
+            >
+              <MenuItem value="facebook">Facebook</MenuItem>
+              <MenuItem value="instagram">Instagram</MenuItem>
+              <MenuItem value="linkedin">LinkedIn</MenuItem>
+            </TextField>
+          </Box>
 
-        <Box sx={{ display: "flex", width: "100%", mt: "1.5rem" }}>
-          <TextField
-            name="message"
-            placeholder="Message"
-            multiline
-            rows={4}
-            sx={styles.textField}
-          />
-        </Box>
+          <Box sx={{ display: "flex", width: "100%", mt: "1.5rem" }}>
+            <TextField
+              name="message"
+              placeholder="Message"
+              multiline
+              rows={4}
+              sx={styles.textField}
+              inputProps={{
+                sx: {
+                  "&::placeholder": {
+                    color: "gray",
+                    opacity: 0.5,
+                  },
+                },
+              }}
+            />
+          </Box>
 
-        <Button type="submit" sx={styles.aboutBtn}>
-          Submit
-        </Button>
+          <Box sx={styles.aboutBtnContainer}>
+            <Button type="submit" sx={styles.aboutBtn}>
+              Submit
+            </Button>
+          </Box>
+        </Box>
       </Box>
     </Box>
   );

@@ -188,6 +188,7 @@ const DrawerAppBar = ({
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
+  const [hovered, setHovered] = useState(false);
   const open = Boolean(anchorEl);
 
   const isActive = (sectionName) => {
@@ -212,6 +213,14 @@ const DrawerAppBar = ({
     } else {
       handlePopoverOpen(event);
     }
+  };
+
+  const handleHover = () => {
+    setHovered(true);
+  };
+
+  const handleMouseLeave = () => {
+    setHovered(false);
   };
 
   useEffect(() => {
@@ -257,13 +266,16 @@ const DrawerAppBar = ({
   );
 
   return (
-    <Box sx={{ display: "flex" }}>
+    <Box
+      sx={{
+        display: "flex",
+      }}
+    >
       <AppBar
         sx={{
           backgroundColor: open || scrolled ? "#ffffff" : "transparent",
           padding: "5px 57px",
-          padding: { xs: "5px 10px", lg: "5px 57px" },
-
+          padding: { xs: "2px 10px", lg: "3px 57px" },
           boxShadow: "none",
           transition: "background-color 1s ease",
           "&:hover": {
@@ -282,9 +294,13 @@ const DrawerAppBar = ({
         component="nav"
       >
         <Toolbar
+          onMouseEnter={handleHover}
+          onMouseLeave={handleMouseLeave}
           sx={{
             display: "flex",
             justifyContent: "space-between",
+            width: { xs: "100%", md: "63rem", lg: "80rem" },
+            margin: "auto",
           }}
         >
           <IconButton
@@ -292,7 +308,7 @@ const DrawerAppBar = ({
             aria-label="open drawer"
             edge="start"
             onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { lg: "none" } }}
+            sx={{ display: { md: "none" } }}
           >
             <MenuIcon
               className="menu-btn"
@@ -300,11 +316,14 @@ const DrawerAppBar = ({
             />
           </IconButton>
 
-          <Image src={scrolled || open ? MainLogo : WhiteLogo} width={200} />
+          <Image
+            src={scrolled || open || hovered ? MainLogo : WhiteLogo}
+            width={200}
+          />
 
           <Box
             sx={{
-              display: { xs: "none", lg: "flex" },
+              display: { xs: "none", md: "flex" },
               gap: "20px",
               justifyContent: "flex-end",
             }}
@@ -550,7 +569,7 @@ const DrawerAppBar = ({
             keepMounted: true,
           }}
           sx={{
-            display: { xs: "flex", sm: "none" },
+            display: { xs: "flex", md: "none" },
             "& .MuiDrawer-paper": {
               boxSizing: "border-box",
               width: drawerWidth,

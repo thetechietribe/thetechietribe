@@ -34,50 +34,65 @@ const icons = [
 
 const Testimonials = () => {
   return (
-    <Box
-      sx={{
-        display: "flex",
-        flexDirection: "column",
-        padding: { xs: "40px", lg: "80px 80px 0px 80px" },
-        justifyContent: "center",
-        backgroundColor: "#ffffff",
-        alignItems: "center",
-      }}
-    >
-      <Box sx={{ width: "100%" }}>
-        <Swiper
-          spaceBetween={30}
-          slidesPerView={8}
-          autoplay={{
-            delay: 2500,
-            disableOnInteraction: false,
-          }}
-          loop={true}
-          modules={[Pagination, Navigation, Autoplay]}
-        >
-          {icons.map((icon, index) => (
-            <SwiperSlide key={index}>
-              <Box
-                sx={{
-                  display: "flex",
-                  justifyContent: "center",
-                  gap: "1rem",
-                  alignItems: "center",
-                }}
-              >
-                {icon === NextIcon ? (
-                  <Image
-                    src={icon}
-                    alt={`Technology icon ${index}`}
-                    width={80}
-                  />
-                ) : (
-                  <Image src={icon} alt={`Technology icon ${index}`} />
-                )}
-              </Box>
-            </SwiperSlide>
-          ))}
-        </Swiper>
+    <Box sx={{ backgroundColor: "#ffffff" }}>
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          width: { xs: "100%", md: "63rem", lg: "80rem" },
+          margin: "auto",
+          padding: { xs: "40px 15px", lg: "80px 0px 0px" },
+          justifyContent: "center",
+          backgroundColor: "#ffffff",
+          alignItems: "center",
+        }}
+      >
+        <Box sx={{ width: "100%" }}>
+          <Swiper
+            spaceBetween={30}
+            slidesPerView={8}
+            autoplay={{
+              delay: 2500,
+              disableOnInteraction: false,
+            }}
+            loop={true}
+            modules={[Pagination, Navigation, Autoplay]}
+            breakpoints={{
+              0: {
+                slidesPerView: 1,
+              },
+              768: {
+                slidesPerView: 3,
+              },
+              1024: {
+                slidesPerView: 8,
+              },
+            }}
+          >
+            {icons.map((icon, index) => (
+              <SwiperSlide key={index}>
+                <Box
+                  sx={{
+                    display: "flex",
+                    justifyContent: "center",
+                    gap: "1rem",
+                    alignItems: "center",
+                  }}
+                >
+                  {icon === NextIcon ? (
+                    <Image
+                      src={icon}
+                      alt={`Technology icon ${index}`}
+                      width={80}
+                    />
+                  ) : (
+                    <Image src={icon} alt={`Technology icon ${index}`} />
+                  )}
+                </Box>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </Box>
       </Box>
     </Box>
   );

@@ -9,6 +9,8 @@ import Footer from "./components/footer/footer";
 import TechnologyIndex from "./components/home/technologyIndex";
 import EngagementPlan from "./components/home/engagementPlan";
 import RequestQuote from "./components/home/requestQuotes";
+import ScrollToTopButton from "./components/general/scrollToTopBtn";
+import ProjectsIndex from "./components/home/projectsIndex";
 
 const Home = () => {
   const [activeSection, setActiveSection] = useState("home");
@@ -46,6 +48,7 @@ const Home = () => {
         scrollToHome={scrollToHome}
         activeSection={activeSection}
       />
+      <ScrollToTopButton />
       <div ref={homeRef}>
         <HeroSection />
       </div>

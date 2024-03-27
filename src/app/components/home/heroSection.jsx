@@ -41,7 +41,7 @@ const styles = {
   heading: {
     color: "#fff",
     textAlign: "center",
-    fontSize: { xs: "40px", lg: "60px" },
+    fontSize: { xs: "30px", md: "60px" },
     margin: "0",
     fontWeight: "700",
     lineHeight: "1.2",
@@ -50,7 +50,7 @@ const styles = {
   },
 
   linkArray: {
-    display: { xs: "column", lg: "flex" },
+    display: { xs: "column", md: "flex" },
     gap: "15px",
     mt: "1rem",
     justifyContent: "center",
@@ -82,7 +82,7 @@ const styles = {
     display: "flex",
     color: "#fff",
     textAlign: "center",
-    fontSize: { xs: "15px", sm: "22px" },
+    fontSize: { xs: "15px", md: "22px" },
     margin: "0",
     fontFamily: "Poppins",
     fontWeight: "200",
@@ -96,10 +96,10 @@ const styles = {
   linksIcon: {
     display: {
       xs: "none",
-      lg: "flex",
+      md: "flex",
     },
     color: "#fff",
-    fontSize: { xs: "10px", sm: "10px" },
+    fontSize: { xs: "10px", md: "10px" },
     margin: "0 5px",
     textAlign: "center",
   },
