@@ -4,15 +4,18 @@ import { Box, Button, Card, Typography } from "@mui/material";
 import MonetizationOnRoundedIcon from "@mui/icons-material/MonetizationOnRounded";
 import Person2RoundedIcon from "@mui/icons-material/Person2Rounded";
 import { CheckBox } from "@mui/icons-material";
+import ProjectsIndex from "./projectsIndex";
 
 const styles = {
   mainContainer: {
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
-    padding: { xs: "40px", lg: "80px" },
+    padding: { xs: "40px 15px", lg: "80px 0px" },
     backgroundColor: "#F6F6F9",
     alignItems: "center",
+    margin: "auto",
+    width: { xs: "100%", md: "63rem", lg: "80rem" },
   },
 
   heading: {
@@ -33,17 +36,17 @@ const styles = {
     fontWeight: "600",
     color: "#313431",
     textAlign: "center",
-    width: { xs: "100%", lg: "80%" },
+    width: { xs: "100%", md: "80%" },
   },
 
   cardContainer: {
     display: "flex",
     flexDirection: "column",
-    padding: "40px 30px",
+    padding: "50px 30px",
     borderRadius: "20px",
     width: "100%",
     mt: "2rem",
-    transition: "backgroundColor 0.5s ease",
+    transition: "background-color 0.5s ease",
 
     "&:hover": {
       backgroundColor: "#378C92",
@@ -111,7 +114,7 @@ const styles = {
     backgroundColor: "white",
     border: "1px solid #378C92",
     fontSize: "16px",
-    width: { xs: "200px", lg: "150px" },
+    width: { xs: "200px", md: "150px" },
     height: "45px",
     transition: "0.5 ease",
     transition: "0.5s ease",
@@ -163,74 +166,31 @@ const data = [
 
 const EngagementPlan = () => {
   return (
-    <Box sx={styles.mainContainer}>
-      <Typography sx={styles.heading}>ENGAGEMENT PLAN</Typography>
+    <Box sx={{ backgroundColor: "#F6F6F9" }}>
+      <Box sx={{ mt: "-5rem" }}>
+        <ProjectsIndex />
+      </Box>
+      <Box sx={styles.mainContainer}>
+        <Typography sx={styles.heading}>ENGAGEMENT PLAN</Typography>
 
-      <Typography sx={styles.subHeading}>
-        We’re open to discussing your ideas and look forward to bringing them to
-        life with our engineering excellence. Choose the plan that best fit your
-        needs, and let’s start getting work
-      </Typography>
+        <Typography sx={styles.subHeading}>
+          We’re open to discussing your ideas and look forward to bringing them
+          to life with our engineering excellence. Choose the plan that best fit
+          your needs, and let’s start getting work
+        </Typography>
 
-      <Box
-        sx={{
-          display: "flex",
-          gap: "2rem",
-          width: "100%",
-          flexDirection: { xs: "column", lg: "row" },
-        }}
-      >
-        <Card sx={styles.cardContainer}>
-          <Box sx={{ display: "flex", gap: "1rem", mb: "1rem" }}>
-            <Box sx={styles.iconContainer} className="icon">
-              <MonetizationOnRoundedIcon
-                sx={{ fontSize: "35px", color: "#378C92" }}
-              />
-            </Box>
-            <Box
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "center",
-              }}
-            >
-              <Typography sx={styles.cardTopText} className="text">
-                For Projects
-              </Typography>
-              <Typography sx={styles.cardHeading} className="text">
-                Fixed Price
-              </Typography>
-            </Box>
-          </Box>
-
-          <Typography sx={styles.cardTagline} className="text">
-            On time. Within budget. As per expectations
-          </Typography>
-
-          {data.slice(0, 3).map((item) => (
-            <Box
-              key={item.id}
-              sx={{ display: "flex", gap: "0.5rem", mt: "1rem" }}
-            >
-              <CheckBox
-                sx={{ color: "#378C92", borderRadius: "10px" }}
-                className="text"
-              />
-              <Typography sx={styles.cardData} className="text">
-                {item.content}
-              </Typography>
-            </Box>
-          ))}
-
-          <Button className="quoteBtn" sx={styles.quoteBtn}>
-            Get A Quote
-          </Button>
-        </Card>
-        <Card sx={styles.cardContainer}>
-          <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+        <Box
+          sx={{
+            display: "flex",
+            gap: "2rem",
+            width: "100%",
+            flexDirection: { xs: "column", md: "row" },
+          }}
+        >
+          <Card sx={styles.cardContainer}>
             <Box sx={{ display: "flex", gap: "1rem", mb: "1rem" }}>
               <Box sx={styles.iconContainer} className="icon">
-                <Person2RoundedIcon
+                <MonetizationOnRoundedIcon
                   sx={{ fontSize: "35px", color: "#378C92" }}
                 />
               </Box>
@@ -242,53 +202,101 @@ const EngagementPlan = () => {
                 }}
               >
                 <Typography sx={styles.cardTopText} className="text">
-                  For Dedicated Teams
+                  For Projects
                 </Typography>
                 <Typography sx={styles.cardHeading} className="text">
-                  IT Experts
+                  Fixed Price
                 </Typography>
               </Box>
             </Box>
-            <Typography
-              sx={{
-                display: { xs: "none", lg: "flex" },
-                backgroundColor: "#F6F6F9",
-                fontSize: "16px",
-                color: "#313431",
-                borderRadius: "12px",
-                padding: "5px 25px",
-                height: "max-content",
-                fontWeight: "00",
-              }}
-              className="popular"
-            >
-              Popular
+
+            <Typography sx={styles.cardTagline} className="text">
+              On time. Within budget. As per expectations
             </Typography>
-          </Box>
 
-          <Typography sx={styles.cardTagline} className="text">
-            High-performing, on-demand teams of IT Experts
-          </Typography>
+            {data.slice(0, 3).map((item) => (
+              <Box
+                key={item.id}
+                sx={{ display: "flex", gap: "0.5rem", mt: "1rem" }}
+              >
+                <CheckBox
+                  sx={{ color: "#378C92", borderRadius: "10px" }}
+                  className="text"
+                />
+                <Typography sx={styles.cardData} className="text">
+                  {item.content}
+                </Typography>
+              </Box>
+            ))}
 
-          {data.slice(4, 7).map((item) => (
-            <Box
-              key={item.id}
-              sx={{ display: "flex", gap: "0.5rem", mt: "1rem" }}
-            >
-              <CheckBox
-                sx={{ color: "#378C92", borderRadius: "10px" }}
-                className="text"
-              />
-              <Typography sx={styles.cardData} className="text">
-                {item.content}
+            <Button className="quoteBtn" sx={styles.quoteBtn}>
+              Get A Quote
+            </Button>
+          </Card>
+          <Card sx={styles.cardContainer}>
+            <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+              <Box sx={{ display: "flex", gap: "1rem", mb: "1rem" }}>
+                <Box sx={styles.iconContainer} className="icon">
+                  <Person2RoundedIcon
+                    sx={{ fontSize: "35px", color: "#378C92" }}
+                  />
+                </Box>
+                <Box
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                  }}
+                >
+                  <Typography sx={styles.cardTopText} className="text">
+                    For Dedicated Teams
+                  </Typography>
+                  <Typography sx={styles.cardHeading} className="text">
+                    IT Experts
+                  </Typography>
+                </Box>
+              </Box>
+              <Typography
+                sx={{
+                  display: { xs: "none", md: "flex" },
+                  backgroundColor: "#F6F6F9",
+                  fontSize: "16px",
+                  color: "#313431",
+                  borderRadius: "12px",
+                  padding: "5px 25px",
+                  height: "max-content",
+                  fontWeight: "00",
+                }}
+                className="popular"
+              >
+                Popular
               </Typography>
             </Box>
-          ))}
 
-          <Button className="quoteBtn" sx={styles.quoteBtn}>
-            Get A Quote
-          </Button>
-        </Card>
+            <Typography sx={styles.cardTagline} className="text">
+              High-performing, on-demand teams of IT Experts
+            </Typography>
+
+            {data.slice(4, 7).map((item) => (
+              <Box
+                key={item.id}
+                sx={{ display: "flex", gap: "0.5rem", mt: "1rem" }}
+              >
+                <CheckBox
+                  sx={{ color: "#378C92", borderRadius: "10px" }}
+                  className="text"
+                />
+                <Typography sx={styles.cardData} className="text">
+                  {item.content}
+                </Typography>
+              </Box>
+            ))}
+
+            <Button className="quoteBtn" sx={styles.quoteBtn}>
+              Get A Quote
+            </Button>
+          </Card>
+        </Box>
       </Box>
     </Box>
   );
